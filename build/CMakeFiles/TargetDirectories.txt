@@ -1,3 +1,0 @@
-/home/nik/Projects/imanet/build/CMakeFiles/rebuild_cache.dir
-/home/nik/Projects/imanet/build/CMakeFiles/imanet.dir
-/home/nik/Projects/imanet/build/CMakeFiles/edit_cache.dir
