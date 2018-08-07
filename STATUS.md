@@ -5,12 +5,16 @@ This is where we will keep a  list of Future, In-progress projects, and Complete
 
 # Future
 
+
 # In-Progress
+Implementing more info to be transferred.
 
 # Completed
+3- point data transfer using sockets
+
 
 # Fail
-
+C++ sockets were a fail!
 
 
 
