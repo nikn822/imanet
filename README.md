@@ -11,7 +11,7 @@ Drones using linux kernal computer
 # Supported Mapping Devices
 Computers using
 
-*MacOS
-*Ubuntu
-*Debian
+/*MacOS
+/*Ubuntu
+/*Debian
 
