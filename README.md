@@ -7,6 +7,10 @@ IMANET Project is an OpenSource Invariant Mobile Ad-Hoc Network, specifically de
 Drones using linux kernal computer
 
 *Rapberry Pi
+*Qualcomm Flight Processor
+*Intel Aero
+*Ubuntu Mate related devices
+----Windows IoT support may come soon
 
 # Supported Mapping Devices
 Computers using
@@ -15,3 +19,6 @@ Computers using
 /*Ubuntu
 /*Debian
 
+
+
+Why are you reading this, go back to work
