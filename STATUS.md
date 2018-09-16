@@ -41,5 +41,5 @@ C++ sockets were a fail!
 
 
 
-imanet uranet we all are nets, we fly our drones like a corvette.:car:
+imanet uranet we all are nets, we fly our drones like corvettes.:car:
 
