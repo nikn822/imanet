@@ -8,6 +8,7 @@ This is where we will keep a  list of Future, In-progress projects, and Complete
 
 # In-Progress
 Implementing more info to be transferred.
+Trying to implement Bokeh into a html plugin.
 
 # Completed
 3- point data transfer using sockets
