@@ -4,6 +4,7 @@ import random
 
 
 port = 8080 
+s = socket.socket() 
 s.bind(('', port))   
 print "socket binded to %s" %(port)
 s.listen(5)     
