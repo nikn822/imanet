@@ -13,7 +13,14 @@ print "socket is listening"
 c, addr = s.accept()  
 print 'Got connection from', addr
 
-while True:
+lolVal = 78
+while (lolVal>0):
 	randInt = random.randint(1,101)
-	s.send(randInt)
+
+	print (randInt)
+
+	stringNum = str(randInt)
+
+	c.send(stringNum)
+
 	

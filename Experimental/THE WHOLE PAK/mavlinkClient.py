@@ -12,4 +12,3 @@ lolWhile = 9
 while (lolWhile >0):
 	  data = newdevice.recv()
 	  print(data)
-	  time.sleep(0.001)
