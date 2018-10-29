@@ -1,11 +1,14 @@
 import socket 
 import time
 import random
-import Tkinter
 
 
-port = 8080 
+
+port = 7850
 s = socket.socket() 
+
+
+
 s.bind(('', port))   
 print "socket binded to %s" %(port)
 s.listen(5)     
