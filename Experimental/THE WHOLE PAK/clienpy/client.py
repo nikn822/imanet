@@ -8,7 +8,7 @@ from ast import literal_eval as make_tuple
 s = socket.socket()         
  
 # Define the port on which you want to connect
-port = 8088               
+port = 8080               
  
 # connect to the server on local computer
 s.connect(('127.0.0.1', port))

@@ -1,5 +1,7 @@
 /* Server code */
+
 /* TODO : Modify to meet your need */
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
