@@ -26,5 +26,7 @@ while (lolVal>0):
 	stringNum = str(randInt)
 
 	c.send(stringNum)
+	time.sleep(0.0001)
+
 
 	
