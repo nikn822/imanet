@@ -30,5 +30,5 @@ text = e.get()
 
 
 
-newIP = ipAddr
+newIP = chr ipAddr
 print (ipAddr)
