@@ -14,7 +14,7 @@ ipAddr = ''
 
 def callback():
     print (e.get())
-    ipAddr == e.get()
+    ipAddr = e.get()
     master.quit()
 
 b = Button(master, text="Change IP", width=10, command =callback)

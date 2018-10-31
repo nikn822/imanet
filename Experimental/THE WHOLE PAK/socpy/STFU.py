@@ -25,8 +25,10 @@ while (lolVal>0):
 
 	stringNum = str(randInt)
 
+	# run for test purposes
+	#c.send("hello")
 	c.send(stringNum)
-	time.sleep(0.0001)
+	time.sleep(0.0100)
 
 
 	
