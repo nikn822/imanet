@@ -38,7 +38,7 @@ def GuiStartCMD():
 	ipAddr = ''
 
 	def callback():
-	    master.quit()
+		master.quit()
 
 	b = Button(master, text="Change IP", width=10, command =callback)
 	b.pack()
@@ -59,7 +59,7 @@ r.line(source=source, x='s', y='r', line_width=2, alpha= .85, color= 'purple')
 
 def update_data():
 		global ct, data
-	    ct += 1
+		ct += 1
 
 
 	while (lolWhile >0):
@@ -69,7 +69,7 @@ def update_data():
 
 		
 	new_data = dict(s=[ct],y=[data])
-    source.stream(new_data,100)
+	source.stream(new_data,100)
 
 
 
