@@ -66,10 +66,18 @@ def update_data():
 	ct +=1
 
 	datStr =  (newdevice.recv())
-	if (datStr!=''):
-		data = int(newdevice.recv())
-	else:
-		data = 0
+#	if (datStr!=''):
+#		data = int(newdevice.recv())
+#	else:
+#		data = 0
+
+	try:
+    	data = int(newdevice.recv())
+	except ValueError:
+    	data = 0
+
+
+    	
 	new_data = dict(s=[ct],y=[data])
 	source.stream(new_data,100)
 
