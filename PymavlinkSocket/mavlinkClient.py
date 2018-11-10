@@ -6,22 +6,17 @@ from pymavlink import mavutil
 
 from tkinter import *
 
-from bokeh.io import curdoc
-from bokeh.models import ColumnDataSource
-from bokeh.plotting import Figure
+import matplotlib
 
-import csv
-import pandas as pd
+import matplotlib.pyplot as plt
+matplotlib.use("TkAgg")
+import matplotlib.animation as animation
+from matplotlib import style
 
-import numpy as np
-import socket 
-import ast 
-
-
-data = 0
 ct = 0
 lolWhile = 9
 datNum = 0
+
 
 
 def GuiStartCMD():
@@ -55,37 +50,41 @@ def GuiStartCMD():
 startGui = GuiStartCMD()
 newdevice = mavutil.mavlink_connection(('tcp:'+startGui), planner_format=True, notimestamps=False, robust_parsing=True) 
 
+style.use('fivethirtyeight')
 
-source = ColumnDataSource(dict(s=[], r=[]))
-r = Figure(width=1000, height=300, title='Random Number Recieved')
-r.line(source=source, x='s', y='r', line_width=2, alpha= .85, color= 'purple')
+fig = plt.figure()
+ax1 = fig.add_subplot(1,1,1)
 
-def update_data():
-	global ct, data, datNum
-	
-	ct +=1
-
-	datStr =  (newdevice.recv())
-#	if (datStr!=''):
-#		data = int(newdevice.recv())
-#	else:
-#		data = 0
-
-	try:
-		data = int(newdevice.recv())
-	except ValueError:
-		data = 0
+def animate(i):
+    xs = []
+    ys = []
+    for line in lines:
+        if len(line) > 1:
+            x, y = line.split(',')
+            xs.append(float(x))
+            ys.append(float(y))
 
 
-    	
-	new_data = dict(s=[ct],y=[data])
-	source.stream(new_data,100)
+    if (lolWhile >0):
+		global data, ct
+		dat =  (newdevice.recv())
+		ct += 1
+
+		try:
+			data = int(dat)
+			xs.append(float(ct))
+			ys.append(float(data))
+		except ValueError:
+			xs.append(float(ct))
+			ys.append(float(0))
 
 
-curdoc().add_root(r)
-curdoc().add_periodic_callback(update_data, 100)
+    ax1.clear()
+    ax1.plot(xs, ys)
 
 
+ani = animation.FuncAnimation(fig, animate, interval=100)
+plt.show()
 	
 
 
