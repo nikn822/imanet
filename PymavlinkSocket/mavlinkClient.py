@@ -3,13 +3,14 @@ from __future__ import print_function
 import time
 
 from pymavlink import mavutil
+import tkinter
 
 from tkinter import *
 
 import matplotlib
 
 import matplotlib.pyplot as plt
-matplotlib.use("TkAgg")
+
 import matplotlib.animation as animation
 from matplotlib import style
 
@@ -21,6 +22,7 @@ datNum = 0
 
 def GuiStartCMD():
 
+	global Tk
 
 	master = Tk()
 
@@ -35,7 +37,7 @@ def GuiStartCMD():
 	ipAddr = ''
 
 	def callback():
-	    master.quit()
+		master.quit()
 
 	b = Button(master, text="Change IP", width=10, command =callback)
 	b.pack()
@@ -56,17 +58,17 @@ fig = plt.figure()
 ax1 = fig.add_subplot(1,1,1)
 
 def animate(i):
-    xs = []
-    ys = []
-    for line in lines:
-        if len(line) > 1:
-            x, y = line.split(',')
-            xs.append(float(x))
-            ys.append(float(y))
+	xs = []
+	ys = []
+	for line in lines:
+		if len(line) > 1:
+			x, y = line.split(',')
+			xs.append(float(x))
+			ys.append(float(y))
 
 
-    if (lolWhile >0):
-		global data, ct
+	if (lolWhile >0):
+		global data,ct
 		dat =  (newdevice.recv())
 		ct += 1
 
@@ -79,8 +81,8 @@ def animate(i):
 			ys.append(float(0))
 
 
-    ax1.clear()
-    ax1.plot(xs, ys)
+	ax1.clear()
+	ax1.plot(xs, ys)
 
 
 ani = animation.FuncAnimation(fig, animate, interval=100)

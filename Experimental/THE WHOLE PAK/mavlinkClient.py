@@ -6,21 +6,6 @@ from pymavlink import mavutil
 
 from tkinter import *
 
-from bokeh.io import curdoc
-from bokeh.models import ColumnDataSource
-from bokeh.plotting import Figure
-
-import csv
-import pandas as pd
-
-import numpy as np
-import socket 
-import ast 
-
-data = 0
-ct = 0
-lolWhile = 9
-
 
 def GuiStartCMD():
 
@@ -53,6 +38,7 @@ def GuiStartCMD():
 startGui = GuiStartCMD()
 newdevice = mavutil.mavlink_connection(('tcp:'+startGui), planner_format=True, notimestamps=False, robust_parsing=True) 
 
+<<<<<<< HEAD
 source = ColumnDataSource(dict(s=[], r=[]))
 r = Figure(width=1000, height=300, title='Random Number Recieved')
 r.line(source=source, x='s', y='r', line_width=2, alpha= .85, color= 'purple')
@@ -73,8 +59,13 @@ def update_data():
 
 
 
+=======
+lolWhile = 9
+>>>>>>> parent of d69327d... Live Plotting
 
-curdoc().add_root(r)
-curdoc().add_periodic_callback(update_data, 100)
+while (lolWhile >0):
+	  time.sleep(0.0100)
+	  data = str (newdevice.recv())
+	  print(data)
 
 
