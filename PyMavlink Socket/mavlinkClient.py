@@ -56,7 +56,6 @@ def GuiStartCMD():
 	return text
 
 
-
 def update_data():
 	global ct, data, datNum
 	
