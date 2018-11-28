@@ -6,6 +6,8 @@ from pymavlink import mavutil
 
 from tkinter import *
 
+import threading as t
+
 from bokeh.io import curdoc
 from bokeh.models import ColumnDataSource
 from bokeh.plotting import Figure
@@ -22,6 +24,7 @@ data = 0
 ct = 0
 lolWhile = 9
 datNum = 0
+getDataRun = False
 
 
 def GuiStartCMD():
@@ -52,29 +55,23 @@ def GuiStartCMD():
 	print ("ipaddr: ",newIP)
 	return text
 
-startGui = GuiStartCMD()
-newdevice = mavutil.mavlink_connection(('tcp:'+startGui), planner_format=True, notimestamps=False, robust_parsing=True) 
 
-
-source = ColumnDataSource(dict(s=[], r=[]))
-r = Figure(width=1000, height=300, title='Random Number Recieved')
-r.line(source=source, x='s', y='r', line_width=2, alpha= .85, color= 'purple')
 
 def update_data():
 	global ct, data, datNum
 	
 	ct +=1
 
-	datStr =  (newdevice.recv())
+#	datStr =  (newdevice.recv())
 #	if (datStr!=''):
 #		data = int(newdevice.recv())
 #	else:
 #		data = 0
 
-	try:
-		data = int(newdevice.recv())
-	except ValueError:
-		data = 0
+#	try:
+#		data = int(newdevice.recv())
+#	except ValueError:
+#		data = 0
 
 
     	
@@ -82,11 +79,45 @@ def update_data():
 	source.stream(new_data,100)
 
 
-curdoc().add_root(r)
-curdoc().add_periodic_callback(update_data, 100)
+def get_data():
+	while (getDataRun):
+		time.sleep(0.0100)
+		try:
+			data = int(newdevice.recv())
+		except ValueError:
+			pass
+		print(data)
+		print(getDataRun)
 
 
-	
+
+if __name__=='__main__':
+
+
+	t1 = t.Thread(target=get_data)
+
+	startGui = GuiStartCMD()
+	newdevice = mavutil.mavlink_connection(('tcp:'+startGui), planner_format=True, notimestamps=False, robust_parsing=True) 
+	source = ColumnDataSource(dict(s=[], r=[]))
+	r = Figure(width=1000, height=300, title='Random Number Recieved')
+	r.line(source=source, x='s', y='r', line_width=2, alpha= .85, color= 'purple')
+
+	curdoc().add_root(r)
+	curdoc().add_periodic_callback(update_data, 100)
+
+	try:
+		getDataRun = True
+
+		while True:
+			time.sleep(0.10)
+
+
+
+	except KeyboardInterrupt:
+		getDataRun = False
+		cleanup_stop_thread()
+		sys.exit()
+		#t1.join()
 
 
 
