@@ -91,7 +91,7 @@ while (lolWhile >0):
 		datNum = int(newdevice.recv())
 	except ValueError:
 		
-	print(dat)
+		print(dat)
 	curdoc().add_periodic_callback(update_data, 100)
 
 
