@@ -72,9 +72,9 @@ def update_data():
 #		data = 0
 
 	try:
-    	data = int(newdevice.recv())
+		data = int(newdevice.recv())
 	except ValueError:
-    	data = 0
+		data = 0
 
 
     	
@@ -87,10 +87,10 @@ curdoc().add_root(r)
 while (lolWhile >0):
 	time.sleep(0.0100)
 	dat =  (newdevice.recv())
-	if (dat!=''):
+	try:
 		datNum = int(newdevice.recv())
-	else:
-		datNum = 0
+	except ValueError:
+		
 	print(dat)
 	curdoc().add_periodic_callback(update_data, 100)
 
